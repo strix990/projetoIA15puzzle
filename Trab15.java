@@ -3,7 +3,7 @@ import java.util.Scanner;
 class Trab15 {
     public static void main(String[]args){
         Scanner imp = new Scanner(System.in);
-        Board game1 = new Board(imp), game2 = new Board(imp);
+        Tabuleiro game1 = new Tabuleiro(imp), game2 = new Tabuleiro(imp);
         System.out.println(game1.solv(game2));
         System.out.println(game2.blkrow[0] + " " + game2.blkrow[1]);
         System.out.println(game2.moveup());
@@ -11,13 +11,13 @@ class Trab15 {
         System.out.println(game2.moves);
     }
 }
-class Board {
+class Tabuleiro {
     static int SIZE = 4;
     int[][] game = new int[SIZE][SIZE]; //tabuleiro do jogo 
     int[] blkrow = new int[2]; //posicao do quadrado vazio
     int inver, moves = 0; //valor do inver para checar se o jogo tem resolucao / numero de movimentos feitos no jogo
 
-    Board(Scanner imp) { //construtor que devolve o inver do jogo e inicializa o tabuleiro
+    Tabuleiro(Scanner imp) { //construtor que devolve o inver do jogo e inicializa o tabuleiro
     int listatemp[] = new int[16]; //lista para checar o inver
     int x1 = 0;
     inver = 0;
@@ -39,7 +39,7 @@ class Board {
                     inver += 1;
         }
     }
-    public boolean solv(Board game2){//devolve se um jogo comparado com um outro jogo qualquer eh solucionavel
+    public boolean solv(Tabuleiro game2){//devolve se um jogo comparado com um outro jogo qualquer eh solucionavel
 
         if(((this.inver%2==0)==(blkrow[1]%2==1))==((game2.inver%2==0)==(blkrow[1]%2==1)))
             return true;
